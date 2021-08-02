@@ -74,13 +74,6 @@ struct Image: Codable {
     var url: String
 }
 
-//struct Owner: Codable {
-//    var id: String
-//    var url: String
-//    var name: String
-//    var description: String
-//    var images: [Image]
-//}
 
 struct Summary: Codable {
     let total: Int

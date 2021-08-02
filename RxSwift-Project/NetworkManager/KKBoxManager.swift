@@ -42,6 +42,7 @@ class KKBoxManager {
 
                 print("Song fetched success!")
                 self.songs.accept(song.data)
+
                 completionHandeler(song)
 
             case .failure(let error):
@@ -49,19 +50,4 @@ class KKBoxManager {
             }
         }
     }
-//    func fetchData(token: String) {
-//       if let url = URL(string: "https://api.kkbox.com/v1.1/new-hits-playlists/DZrC8m29ciOFY2JAm3/tracks") {
-//          URLSession.shared.dataTask(with: url) { data, response, error in
-//            if let data = data {
-//               do {
-//                 let songs = try JSONDecoder().decode(SongData.self, from: data)
-//                self.songs.accept(songs.data)
-//
-//               } catch let error {
-//                 print(error)
-//               }
-//            }
-//          }.resume()
-//       }
-//    }
 }

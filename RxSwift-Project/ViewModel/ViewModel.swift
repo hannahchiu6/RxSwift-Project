@@ -26,18 +26,26 @@ class ViewModel {
     let disposeBag = DisposeBag()
 
     func getData() {
+
         tokenManager.getToken { token in
+
             KKBoxManager.shared.fetchSongs(token) { songData in
+
                 guard !songData.data.isEmpty else {
+
                   self.noMoreData.onNext(true)
                   self.isLoading.onNext(false)
+
                   return
+
                 }
 
                 self.songArray += songData.data
 
                 KKBoxManager.shared.offset = self.songArray.count
+
                 self.songs.accept(self.songs.value)
+
                 self.isLoading.onNext(false)
             }
         }
