@@ -22,12 +22,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        navigationController?.navigationBar.prefersLargeTitles = true
-//        view.addSubview(tableView)
-//        view.backgroundColor = .white
-
-//        tableView.translatesAutoresizingMaskIntoConstraints = false
-
         tableView.register(UINib(nibName: "SongTableViewCell", bundle: nil), forCellReuseIdentifier: "songCell")
 
         tableView.register(UINib(nibName: "HeaderTableViewCell", bundle: nil), forCellReuseIdentifier: "headerCell")
@@ -52,24 +46,20 @@ class ViewController: UIViewController {
           } else {
 
             self?.vm.getData()
+
             self?.tableView.mj_footer?.endRefreshing()
+
           }
+
         }.disposed(by: self.disposeBag)
       }
+
       tableView.mj_footer = footer
     }
 
 
     func setupTableView() {
 
-//        NSLayoutConstraint.activate([
-//          tableView.topAnchor.constraint(equalTo: view.bottomAnchor, constant: 0.0),
-//          tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0.0),
-//          tableView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0.0),
-//          tableView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0.0)
-//        ])
-
-//        KKBoxManager.shared.songs.asObservable()
         vm.songs.asObservable()
             .bind(to: tableView.rx.items) { (tableView, row, element) in
 
